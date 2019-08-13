@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication1.Models.Indicador>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Indicadores</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Situacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SetorID)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Situacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SetorID)
+            </td>
+            <td>
+                <a asp-action="Create" asp-route-id="@item.IndicadorId"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.IndicadorId" onclick="return confirm('Tem certeza que deseja excluir esse indicador?')"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
